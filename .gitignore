@@ -1,0 +1,4 @@
+out
+.env
+pokedexcli
+*.log
