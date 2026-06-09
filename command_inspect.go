@@ -21,7 +21,7 @@ func callbackInspect(cfg *config, args ...string) error {
 		fmt.Printf(" - %s: %v\n", stat.Stat.Name, stat.BaseStat)
 	}
 	for _, typ := range pokemon.Types {
-		fmt.Printf(" -  %s", typ.Type.Name)
+		fmt.Printf(" -  %s\n", typ.Type.Name)
 	}
 
 	return nil
