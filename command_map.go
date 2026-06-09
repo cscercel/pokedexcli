@@ -1,14 +1,11 @@
 package main
 
-import (
-	"fmt"
-	"log"
-)
+import "fmt"
 
-func callbackMap(cfg *config) error {
+func callbackMap(cfg *config, args ...string) error {
 	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.nextLocationAreaURL)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	fmt.Println("Location areas:")
 	for _, area := range resp.Results {
@@ -21,14 +18,14 @@ func callbackMap(cfg *config) error {
 	return nil
 }
 
-func callbackMapb(cfg *config) error {
+func callbackMapb(cfg *config, args ...string) error {
 	if cfg.previousLocationAreaURL == nil {
 		return fmt.Errorf("you are on the first page")
 	}
 
 	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.previousLocationAreaURL)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	fmt.Println("Location areas:")
 	for _, area := range resp.Results {
